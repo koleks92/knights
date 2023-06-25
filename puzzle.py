@@ -24,7 +24,7 @@ knowledge0 = And(
 # B says nothing.
 knowledge1 = And(
     And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), # A Cant be both
-    And(Or(BKnight, BKnave), Not(And(AKnight, AKnave))), # B cant be both
+    And(Or(BKnight, BKnave), Not(And(BKnight, BKnave))), # B cant be both
 
     Implication(AKnight, And(AKnave, BKnave)), # If knights says
     Implication(AKnave, Not(And(AKnave, BKnave))), # IF Knvae says
@@ -38,7 +38,7 @@ knowledge1 = And(
 # B says "We are of different kinds."
 knowledge2 = And(
     And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), # A Cant be both
-    And(Or(BKnight, BKnave), Not(And(AKnight, AKnave))), # B cant be both
+    And(Or(BKnight, BKnave), Not(And(BKnight, BKnave))), # B cant be both
 
     Implication(AKnight, BKnight),          # IF Knight says A
     Implication(AKnave, Not(BKnave)),       # If knave says A
@@ -53,7 +53,9 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-    # TODO
+    And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), # A Cant be both
+    And(Or(BKnight, BKnave), Not(And(AKnight, AKnave))), # B cant be both
+    And(Or(CKnight, CKnave), Not(And(CKnight, CKnave))), # C cant be both
 )
 
 
