@@ -29,7 +29,7 @@ knowledge1 = And(
     Implication(AKnight, And(AKnave, BKnave)), # If knights says
     Implication(AKnave, Not(And(AKnave, BKnave))), # IF Knvae says
 
-    # B says nothig, so no information 
+    # B says nothing -> no information 
     
 )
 
@@ -37,7 +37,14 @@ knowledge1 = And(
 # A says "We are the same kind."
 # B says "We are of different kinds."
 knowledge2 = And(
-    # TODO
+    And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), # A Cant be both
+    And(Or(BKnight, BKnave), Not(And(AKnight, AKnave))), # B cant be both
+
+    Implication(AKnight, BKnight),          # IF Knight says A
+    Implication(AKnave, Not(BKnave)),       # If knave says A
+
+    Implication(BKnight, AKnave),           # If knight says B
+    Implication(BKnave, Not(AKnight))       # If knave says B
 )
 
 # Puzzle 3
