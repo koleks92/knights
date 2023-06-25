@@ -5,6 +5,7 @@ AKnave = Symbol("A is a Knave")
 
 BKnight = Symbol("B is a Knight")
 BKnave = Symbol("B is a Knave")
+BNothing = Symbol("B says nothing")
 
 CKnight = Symbol("C is a Knight")
 CKnave = Symbol("C is a Knave")
@@ -22,12 +23,14 @@ knowledge0 = And(
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
-    And(Or(AKnight, AKnave),Not(And(AKnight, AKnave))),
+    And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), # A Cant be both
+    And(Or(BKnight, BKnave), Not(And(AKnight, AKnave))), # B cant be both
 
-    Implication(AKnight, And(AKnave, AKnave)),
-    Implication(AKnave, Not(And(AKnave, AKnave))),
+    Implication(AKnight, And(AKnave, BKnave)), # If knights says
+    Implication(AKnave, Not(And(AKnave, BKnave))), # IF Knvae says
 
-
+    # B says nothig, so no information 
+    
 )
 
 # Puzzle 2
